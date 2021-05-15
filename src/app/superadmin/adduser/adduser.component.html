@@ -170,6 +170,7 @@
               <th scope="col">Tenant Name <i class="fa fa-sort"></i></th>
               <th scope="col">Contact <i class="fa fa-sort"></i></th>
               <th scope="col">Permission&nbsp;<i class="fa fa-sort"></i></th>
+              <th scope="col">Status&nbsp;<i class="fa fa-sort"></i></th>
               <th scope="col" *ngIf="parent">Action </th>
               <th scope="col" *ngIf="editParent">Action </th>
             </tr>
@@ -185,7 +186,7 @@
               <td class="permission"><span class="badge"
                   [ngClass]="{'badge-success': user.permission =='ALL', 'badge-secondary' : user.permission =='VIEW','badge-warning' : user.permission =='EDIT'}">{{user.permission}}</span>
               </td>
-
+              <td ><span class="badge badge-success">{{user.status}}</span></td>
 
               <td>
                 <ul class="list-inline m-0">
@@ -213,38 +214,37 @@
 
           </tbody>
 
-          <tbody *ngIf ='allMember'>
-
-
-            <tr *ngFor='let user of Details |  paginate: { itemsPerPage: count, currentPage: p } ; index as i' >
+          <tbody *ngIf ="allMember">
+            <tr *ngFor='let user of Details |  paginate: { itemsPerPage: count, currentPage: p } ; index as i'>
 
               <td>{{(p-1) * count+i+1}}</td>
               <td>{{user.name}}</td>
               <td>{{user.email}}</td>
+              <td>{{user.t_name}}</td>
               <td>+91{{user.phone}}</td>
               <td class="permission"><span class="badge"
-                  [ngClass]="{'badge-success': user.permission =='ALL', 'badge-warning' : user.permission =='VIEW','badge-secondary' : user.permission =='EDIT'}">{{user.permission}}</span>
+                  [ngClass]="{'badge-success': user.permission =='ALL', 'badge-secondary' : user.permission =='VIEW','badge-warning' : user.permission =='EDIT'}">{{user.permission}}</span>
               </td>
-              <td class="status"><span class="badge"
+              <td class="status"><span class="badge"  
                 [ngClass]="{'badge-success': user.status =='Active', 'badge-danger' : user.status =='Inactive'}">{{user.status}}</span>
             </td>
-              
 
               <td>
                 <ul class="list-inline m-0">
 
                   <li class="list-inline-item">
-                    <button class="btn text-warning btn-sm rounded-0" *ngIf="tenant" (click)="editUser(user)" type="button"
-                      data-toggle="tooltip" data-toggle="modal" data-target=".bd-edit-modal-lg" data-placement="top"
-                      title="Edit"><i class="fa fa-edit"></i></button>
-
-                      <button class="btn text-warning btn-sm rounded-0" *ngIf="editTenant" (click)="editUser(user)" type="button"
-                      data-toggle="tooltip" data-toggle="modal" data-target=".bd-edit-modal-lg" data-placement="top"
-                      title="Edit"><i class="fa fa-edit"></i></button>
+                    <button class="btn text-warning btn-sm rounded-0" *ngIf="parent" (click)="editUser(user)"
+                      type="button" data-toggle="tooltip" data-toggle="modal" data-target=".bd-edit-modal-lg"
+                      data-placement="top" title="Edit"><i class="fa fa-edit"></i></button>
                   </li>
                   <li class="list-inline-item">
-                    <button class="btn text-danger btn-sm rounded-0" *ngIf="tenant"  (click)="deleteUser(user)" type="button"
-                      data-toggle="tooltip" data-placement="top" title="Delete">
+                    <button class="btn text-warning btn-sm rounded-0" *ngIf="editParent" (click)="editUser(user)"
+                      type="button" data-toggle="tooltip" data-toggle="modal" data-target=".bd-edit-modal-lg"
+                      data-placement="top" title="Edit"><i class="fa fa-edit"></i></button>
+                  </li>
+                  <li class="list-inline-item">
+                    <button class="btn text-danger btn-sm rounded-0" *ngIf="parent" (click)="deleteUser(user)"
+                      type="button" data-toggle="tooltip" data-placement="top" title="Delete">
                       <i class="fa fa-trash"></i>
                     </button>
                   </li>
@@ -253,40 +253,38 @@
             </tr>
 
 
-
           </tbody>
 
-          <tbody *ngIf ='Inactive'>
-
-
-            <tr *ngFor='let u of InactiveDetail |  paginate: { itemsPerPage: count, currentPage: p } ; index as i' >
+          <tbody *ngIf ="Inactive">
+            <tr *ngFor='let user of InactiveDetail |  paginate: { itemsPerPage: count, currentPage: p } ; index as i'>
 
               <td>{{(p-1) * count+i+1}}</td>
-              <td>{{u.name}}</td>
-              <td>{{u.email}}</td>
-              <td>+91{{u.phone}}</td>
+              <td>{{user.name}}</td>
+              <td>{{user.email}}</td>
+              <td>{{user.t_name}}</td>
+              <td>+91{{user.phone}}</td>
               <td class="permission"><span class="badge"
-                  [ngClass]="{'badge-success': user.permission =='ALL', 'badge-warning' : user.permission =='VIEW','badge-secondary' : user.permission =='EDIT'}">{{u.permission}}</span>
+                  [ngClass]="{'badge-success': user.permission =='ALL', 'badge-secondary' : user.permission =='VIEW','badge-warning' : user.permission =='EDIT'}">{{user.permission}}</span>
               </td>
-              <td ><span class="badge badge-danger">{{u.status}}</span></td>
+              <td ><span class="badge badge-danger">{{user.status}}</span></td>
 
               <td>
                 <ul class="list-inline m-0">
 
                   <li class="list-inline-item">
-                    <button class="btn text-warning btn-sm rounded-0" *ngIf="tenant" (click)="editUser(u)" type="button"
-                      data-toggle="tooltip" data-toggle="modal" data-target=".bd-edit-modal-lg" data-placement="top"
-                      title="Edit"><i class="fa fa-edit"></i></button>
-
-                      <button class="btn text-warning btn-sm rounded-0" *ngIf="editTenant" (click)="editUser(u)" type="button"
-                      data-toggle="tooltip" data-toggle="modal" data-target=".bd-edit-modal-lg" data-placement="top"
-                      title="Edit"><i class="fa fa-edit"></i></button>
+                    <button class="btn btn-warning btn-sm rounded-0" *ngIf="parent" (click)="activateUser(user)"
+                      type="button" data-toggle="tooltip" data-toggle="modal" 
+                      data-placement="top" title="Edit">Activate</button>
                   </li>
-                 
+                  <li class="list-inline-item">
+                    <button class="btn btn-warning btn-sm rounded-0" *ngIf="editParent" (click)="activateUser(user)"
+                      type="button" data-toggle="tooltip" data-toggle="modal" 
+                      data-placement="top" title="Edit">Activate</button>
+                  </li>
+               
                 </ul>
               </td>
             </tr>
-
 
 
           </tbody>

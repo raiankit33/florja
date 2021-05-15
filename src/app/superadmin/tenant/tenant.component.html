@@ -150,7 +150,7 @@
               <th scope="col">Contact <i class="fa fa-sort"></i></th>
               <th scope="col" (click)="sortData('tenant_id')">Created at <i class="fa fa-sort"></i></th>
               <th scope="col">Status <i class="fa fa-sort"></i></th>
-              <th scope="col" *ngIf="parent " >Action </th>
+              <th scope="col" *ngIf="parent;else hide " >Action </th>
               <th scope="col" *ngIf="editParent">Action </th>
 
           </thead>
@@ -215,13 +215,13 @@
                       data-toggle="modal" data-target=".bd-modal-lg" data-placement="top" (click)="editTen(tenant)"
                       title="Edit"><i class="fa fa-edit"></i></button>
                   </li>
-                  <!-- sub admin for edit only  -->
+                
                   <li class="list-inline-item">
                     <button class="btn text-warning btn-sm rounded-0" *ngIf=" editParent"  type="button" data-toggle="tooltip"
                       data-toggle="modal" data-target=".bd-modal-lg" data-placement="top" (click)="editTen(tenant)"
                       title="Edit"><i class="fa fa-edit"></i></button>
                   </li>
-                   <!-- sub admin for edit only  -->
+                  
                    <li class="list-inline-item">
                     <button class="btn text-danger btn-sm rounded-0" *ngIf="parent"  (click)="deleteTen(tenant.id)" type="button"
                       data-toggle="tooltip" data-placement="top" title="Delete">
@@ -229,7 +229,7 @@
                     </button>
                   </li>
                 </ul>
-              </td>
+              </td> 
             </tr>
 
           </tbody>
@@ -275,7 +275,7 @@
       <div class="pagination">
         <pagination-controls (pageChange)="p = $event"></pagination-controls>
       </div>
-
+ <!-- showing {{p}} to {{count}} of {{tenantDetails.length}} entries -->
     </div>
   </div>
   <!-- /.card -->

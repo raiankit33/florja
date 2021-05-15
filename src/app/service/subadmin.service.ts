@@ -87,15 +87,16 @@ return this.http.post('https://9368fefpvb.execute-api.us-east-2.amazonaws.com/de
 
 }
 
-
-
 UpdateSubTenant(user){
       
 return this.http.put('https://9368fefpvb.execute-api.us-east-2.amazonaws.com/updateTenant/updateTenant?id='+user.id,user).pipe(map(res => res));
 
-
-
 }
+
+activateTenant(user){
+    return this.http.post('https://9368fefpvb.execute-api.us-east-2.amazonaws.com/activateTenant/activateTenant', user)
+      .pipe(catchError(this.handleError));
+  }
 
 
 // notification api

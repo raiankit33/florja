@@ -56,7 +56,10 @@ export class TenantloginComponent implements OnInit {
               }
             
             } else {
-              console.log('error');
+              if(data.statusCode == 406){
+                this.error = 'Oops Login fail Inactive Tenant' 
+              }
+          
               this.toastr.error('Oops', 'Failed to logged In');
               this.router.navigate(['login']);
             }

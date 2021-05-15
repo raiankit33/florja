@@ -153,7 +153,7 @@
               <th scope="col">Tenant Name <i class="fa fa-sort"></i></th>
               <th scope="col">Permission&nbsp;<i class="fa fa-sort"></i></th>
               <th scope="col">Status&nbsp;<i class="fa fa-sort"></i></th>
-              <th scope="col" *ngIf="tenant">Action </th>
+              <th scope="col"  *ngIf="tenant">Action </th>
               <th scope="col" *ngIf="editTenant">Action </th>
             </tr>
           </thead>
@@ -170,7 +170,7 @@
               <td class="permission"><span class="badge"
                   [ngClass]="{'badge-success': user.permission =='ALL', 'badge-warning' : user.permission =='EDIT','badge-secondary' : user.permission =='VIEW'}">{{user.permission}}</span>
               </td>
-              <td>{{user.status}}</td>
+              <td ><span class="badge badge-success">{{user.status}}</span></td>
 
               <td>
                 <ul class="list-inline m-0">
@@ -237,7 +237,7 @@
                     </button>
                   </li>
                 </ul>
-              </td>
+              </td> 
             </tr>
 
 
@@ -257,27 +257,22 @@
               <td class="permission"><span class="badge"
                   [ngClass]="{'badge-success': user.permission =='ALL', 'badge-warning' : user.permission =='EDIT','badge-secondary' : user.permission =='VIEW'}">{{user.permission}}</span>
               </td>
-              <td>{{user.status}}</td>
+              <td ><span class="badge badge-danger">{{user.status}}</span></td>
 
               <td>
                 <ul class="list-inline m-0">
 
                   <li class="list-inline-item">
-                    <button class="btn text-warning btn-sm rounded-0" *ngIf="tenant" (click)="editUser(user)"
+                    <button class="btn btn-warning btn-sm rounded-0" *ngIf="tenant" (click)="ActiveLink(user)"
                       type="button" data-toggle="tooltip" data-toggle="modal" data-target=".bd-edit-modal-lg"
-                      data-placement="top" title="Edit"><i class="fa fa-edit"></i></button>
+                      data-placement="top" title="Edit">Activate</button>
 
-                    <button class="btn text-warning btn-sm rounded-0" *ngIf="editTenant" (click)="editUser(user)"
+                    <button class="btn btn-warning btn-sm rounded-0" *ngIf="editTenant" (click)="ActiveLink(user)"
                       type="button" data-toggle="tooltip" data-toggle="modal" data-target=".bd-example-modal-lg"
-                      data-placement="top" title="Edit"><i class="fa fa-edit"></i></button>
+                      data-placement="top" title="Edit">Activate</button>
 
                   </li>
-                  <li class="list-inline-item">
-                    <button class="btn text-danger btn-sm rounded-0" *ngIf="tenant" (click)="deleteUser(user)"
-                      type="button" data-toggle="tooltip" data-placement="top" title="Delete">
-                      <i class="fa fa-trash"></i>
-                    </button>
-                  </li>
+                
                 </ul>
               </td>
             </tr>

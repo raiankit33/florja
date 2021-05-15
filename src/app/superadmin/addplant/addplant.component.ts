@@ -128,7 +128,7 @@ export class AddplantComponent implements OnInit {
      winter_end: new FormControl('',Validators.required),
      winter_start: new FormControl('',Validators.required),
      t_id: new FormControl('',Validators.required),
-     u_name: new FormControl('',Validators.required),
+     u_id: new FormControl('',Validators.required),
      latitude: new FormControl('',Validators.required),
      longitude: new FormControl('',Validators.required),
      
@@ -187,7 +187,7 @@ export class AddplantComponent implements OnInit {
 
       let createPlant ={
         t_id: this.form.value.t_id,
-        u_name: this.form.value.u_name,
+        u_id: this.form.value.u_id,
         name: this.form.value.name,
         soil_humidity_min: this.form.value.soil_humidity_min,
         soil_humidity_max: this.form.value.soil_humidity_max,
@@ -210,7 +210,7 @@ export class AddplantComponent implements OnInit {
         winter_start: this.form.value.winter_start,
         latitude: this.form.value.latitude,
         longitude: this.form.value.longitude,
-        token:this.user.token
+        AuthToken:this.user.token
       }
 console.log(createPlant)
      this.serviceService.registerPlant(createPlant).subscribe( res=> {
@@ -236,7 +236,7 @@ console.log(createPlant)
     }
      this.serviceService.getPlantDetails(createToken).subscribe((res:any)=>{
        this.plantDetails = res.data;
-      
+      console.log(this.plantDetails)
       //  this.tenantDetails = this.Details.filter(data => data.deleted_at === '');
 
       //  this.InactiveDetail = this.Details.filter(data => data.deleted_at !== '' );

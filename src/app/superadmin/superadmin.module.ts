@@ -32,7 +32,7 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../../environments/environment';
 import { SocialsComponent } from './socials/socials.component';
 
-
+import {NgxImageCompressService} from 'ngx-image-compress';
 // import { AsyncPipe } from '../../../node_modules/@angular/common';
 
 @NgModule({
@@ -68,6 +68,6 @@ import { SocialsComponent } from './socials/socials.component';
     AngularFireModule.initializeApp(environment.firebase),
     SuperadminRoutingModule
   ],
-  providers: [ServiceService,MessagingService],
+  providers: [ServiceService,MessagingService,NgxImageCompressService],
 })
 export class SuperadminModule { }

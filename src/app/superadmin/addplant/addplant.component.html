@@ -45,10 +45,10 @@
 
                 <div class="input-box">
                   <span class="details">* User Name</span>
-                  <select class="form-control" formControlName="u_name" name="u_name" [ngClass]="
-                    { 'is-invalid': form.get('u_name').touched && form.get('u_name').invalid}" style="width:100%;">
+                  <select class="form-control" formControlName="u_id" name="u_id" [ngClass]="
+                    { 'is-invalid': form.get('u_id').touched && form.get('u_id').invalid}" style="width:100%;">
                     <option value="">---Select--- </option>
-                    <option value="{{user.name}}" *ngFor="let user of userDetails ">{{user.name}} </option>
+                    <option value="{{user.id}}" *ngFor="let user of userDetails ">{{user.name}} </option>
 
                   </select>
                   <div class="invalid-feedback">
@@ -398,7 +398,7 @@
             </tr>
           </thead>
 
-          <tbody *ngIf="active">
+          <tbody >
             <tr
               *ngFor="let plant of plantDetails | filter:name |  paginate: { itemsPerPage: count, currentPage: p }; index as i">
               <td>{{(p-1) * count+i+1}}</td>
@@ -439,78 +439,9 @@
 
           </tbody>
 
-          <tbody *ngIf="allMember">
-            <tr
-              *ngFor="let plant of plantDetails | filter:name |  paginate: { itemsPerPage: count, currentPage: p }; index as i">
-              <td>{{(p-1) * count+i+1}}</td>
-              <td><a (click)="plantPage(plant)" style="color: blue;">{{plant.name}}</a></td>
-              <td><span>3</span></td>
-              <td><span class="badge bg-success">unit 1 running</span></td>
+         
 
-              <td>{{plant.t_name}}</td>
-              <td> {{plant.u_name}} </td>
-              <td class="status"><span class="badge"
-                [ngClass]="{'badge-success': plant.status =='Active', 'badge-danger' : plant.status =='Inactive'}">{{plant.status}}</span>
-            </td>
-              <td><input (click)="pushNotification($event,plant)" type="checkbox" [checked]="checks"> </td>
-              <td>
-                <ul class="list-inline m-0">
-
-                  <li class="list-inline-item">
-                    <button class="btn text-warning btn-sm rounded-0" *ngIf="parent" (click)="editPlant(plant)"
-                      type="button" data-toggle="tooltip" data-toggle="modal" data-target=".bd-edit-modal-lg"
-                      data-placement="top" title="Edit"><i class="fa fa-edit"></i></button>
-
-                    <button class="btn text-warning btn-sm rounded-0" *ngIf="editParent" (click)="editPlant(plant)"
-                      type="button" data-toggle="tooltip" data-toggle="modal" data-target=".bd-edit-modal-lg"
-                      data-placement="top" title="Edit"><i class="fa fa-edit"></i></button>
-
-                  </li>
-                  <li class="list-inline-item">
-                    <button class=" btn text-danger btn-sm rounded-0" *ngIf="parent" (click)="deletePlant(plant.id)"
-                      type="button" data-toggle="tooltip" data-placement="top" title="Delete">
-                      <i class="fa fa-trash"></i>
-                    </button>
-                  </li>
-                </ul>
-              </td>
-            </tr>
-
-
-          </tbody>
-
-          <tbody *ngIf="Inactive">
-            <tr
-              *ngFor="let plant of plantDetails | filter:name |  paginate: { itemsPerPage: count, currentPage: p }; index as i">
-              <td>{{(p-1) * count+i+1}}</td>
-              <td><a (click)="plantPage(plant)" style="color: blue;">{{plant.name}}</a></td>
-              <td><span>3</span></td>
-              <td><span class="badge bg-success">unit 1 running</span></td>
-
-              <td>{{plant.t_name}}</td>
-              <td>{{plant.u_name}}</td>
-              <td ><span class="badge badge-danger">{{plant.status}}</span></td>
-              <td><input (click)="pushNotification($event,plant)" type="checkbox" [checked]="checks"> </td>
-              <td>
-                <ul class="list-inline m-0">
-
-                  <li class="list-inline-item">
-                    <button class="btn text-warning btn-sm rounded-0" *ngIf="parent" (click)="editPlant(plant)"
-                      type="button" data-toggle="tooltip" data-toggle="modal" data-target=".bd-edit-modal-lg"
-                      data-placement="top" title="Edit"><i class="fa fa-edit"></i></button>
-
-                    <button class="btn text-warning btn-sm rounded-0" *ngIf="editParent" (click)="editPlant(plant)"
-                      type="button" data-toggle="tooltip" data-toggle="modal" data-target=".bd-edit-modal-lg"
-                      data-placement="top" title="Edit"><i class="fa fa-edit"></i></button>
-
-                  </li>
-
-                </ul>
-              </td>
-            </tr>
-
-
-          </tbody>
+        
 
 
         </table>
@@ -566,9 +497,9 @@
 
                     <div class="input-box">
                       <span class="details">* User Name</span>
-                      <select class="form-control" name="u_name" [(ngModel)]="userObj.u_name">
+                      <select class="form-control" name="u_name" [(ngModel)]="userObj.u_id">
                         <option value="">---Select--- </option>
-                        <option value="{{user.name}}" *ngFor="let user of userDetails ">{{user.name}} </option>
+                        <option value="{{user.id}}" *ngFor="let user of userDetails ">{{user.name}} </option>
 
                       </select>
 

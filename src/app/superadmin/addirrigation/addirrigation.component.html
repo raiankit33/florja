@@ -54,8 +54,8 @@
 
                 <div class="input-box">
                   <span class="details">* Plant Name</span>
-                  <select class="form-control" formControlName="p_id" name="p_id" 
-                    [ngClass]="  { 'is-invalid': form.get('p_id').touched && form.get('p_id').invalid}"
+                  <select class="form-control" formControlName="plant_id" name="plant_id" 
+                    [ngClass]="  { 'is-invalid': form.get('plant_id').touched && form.get('plant_id').invalid}"
                     style="width: 100%;">
                     <option value="">---Select--- </option>
                     <option value="{{plant.id}}"  *ngFor="let plant of plantDetails ">{{plant.name}}
@@ -401,7 +401,7 @@
 
                   <div class="input-box">
                     <span class="details">* Plant Name</span>
-                    <select class="form-control" name="name" [(ngModel)]="userObj.p_id"
+                    <select class="form-control" name="plant_name" [(ngModel)]="userObj.plant_id"
                       style="width: 100%;">
                       <option value="">---Select--- </option>
                       <option  [value]="plant.id" *ngFor="let plant of plantDetails ">{{plant.name}}

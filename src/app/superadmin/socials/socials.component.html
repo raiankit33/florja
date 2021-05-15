@@ -33,7 +33,7 @@
           <ul class="icons">
             <!-- (change)="preview(file.files)" -->
             <li > <i class="uil uil-capture" ></i></li>
-            <input #file type="file"   (change)="onFileSelected($event)" name="image"
+            <input #file type="file"   (click)="compressFile($event)" name="image"
             formControlName="image" />    
             <!-- <li><i class="far fa-file-image"></i></li> -->
             <li><i class="fas fa-map-marker-alt"></i>
@@ -97,7 +97,7 @@
         <br>
         <p class="card-text ml-4">{{card.feed}}</p>
  
-        <img class="card-img-top" src="data:image/png;base64,{{card.image}}" style="height: 450px;  display:block"  class="ml-4 mr-4 mt-2"  alt="image">
+        <img class="card-img-top" *ngIf="card.image != 'null'" src="{{card.image}}" style="height: 450px;  display:block"  class="ml-4 mr-4 mt-2"  alt="image">
 
         <div class="card-body">
             <div class="box">
@@ -154,3 +154,13 @@
 <br /><br />
 base64 Output : <br />
 {{base64Output}} -->
+
+
+
+
+<!-- <div>
+  <button (click)="compressFile($event)">Upload and compress Image</button>
+  <img *ngIf="imgResultBeforeCompress" [src]="imgResultBeforeCompress" alt="">
+  <img *ngIf="imgResultAfterCompress" [src]="imgResultAfterCompress" alt="">
+</div>
+{{imgResultAfterCompress}} -->

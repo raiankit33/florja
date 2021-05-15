@@ -16,6 +16,7 @@ export class AdminloginComponent implements OnInit {
 
   email: String;
   password: String;
+  mess: boolean;
 
   constructor(
     private authService: AuthService,
@@ -55,17 +56,22 @@ export class AdminloginComponent implements OnInit {
                 this.router.navigate(['superadmin']);
                 this.toastr.success('Success ! logged In');
                
-              }
+              } 
 
             } else {
-              console.log('error');
+               if(data.statusCode == 406){
+                this.error = 'Oops Login fail Inactive Admin' 
+               }else{
+             
               this.toastr.error('Oops', 'Invalid Email/Password ');
               this.router.navigate(['login']);
-            }
+            }}
           },
           (error) => {
             this.error = 'Server Down Please try After Sometime ..! '
-
+            setTimeout(() => {
+            
+            }, 3000);
 
           }
         );

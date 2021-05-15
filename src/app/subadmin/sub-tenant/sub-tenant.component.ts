@@ -25,7 +25,7 @@ export class SubTenantComponent implements OnInit {
   active:boolean =true;
   Inactive:boolean = false;
   allMember: boolean =false;
-
+hide :boolean=true;
 
   userObj = {
     id: "",
@@ -65,7 +65,7 @@ export class SubTenantComponent implements OnInit {
     if (this.user.permission == 'ALL') {
       this.tenant = true;
     } else if (this.user.permission == 'VIEW') {
-
+    
       this.tenant = false
     } else if (this.user.permission == 'EDIT') {
 
@@ -98,10 +98,13 @@ export class SubTenantComponent implements OnInit {
       }
     });
   }
+
+
   AllTab(){
     this.allMember = true;
     this.active =false;
     this.Inactive =false;
+  
   }
 
   ActiveTab(){
@@ -124,7 +127,8 @@ export class SubTenantComponent implements OnInit {
         name: this.form.value.name,
         email: this.form.value.email,
         phone: this.form.value.phone,
-        permission: this.form.value.permission
+        permission: this.form.value.permission,
+        AuthToken:this.user.token
       }
    
       this.subadminService.addSubTenant(createUserPayload).subscribe(res => {
@@ -181,10 +185,13 @@ delete : any;
       if (result.isConfirmed) {
        
     
-          this.delete = JSON.stringify(user)
+       let token ={
+         id:user.id,
+         AuthToken :this.user.token
+       }
            
        
-        this.subadminService.deleteSubTenant(this.delete).subscribe((res: any) => {
+        this.subadminService.deleteSubTenant(token).subscribe((res: any) => {
           this.getUserDetails();
 
 
@@ -216,6 +223,36 @@ delete : any;
         'success'
       )
     })
+  }
+
+
+  ActiveLink(user) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You want to Activate this Tenant!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, Activate!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        let activate ={
+          id :user.id,
+          AuthToken:this.user.token
+        }
+       
+        this.subadminService.activateTenant(activate).subscribe(() => {
+          this.getUserDetails();
+          Swal.fire(
+            'Success!',
+            'Tenant Activated.',
+            'success'
+          )
+        });
+
+        
+      }})
   }
 
 

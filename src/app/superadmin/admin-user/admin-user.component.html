@@ -188,7 +188,7 @@
                
   
   
-                <td>
+                <!-- <td>
                   <ul class="list-inline m-0">
   
                     <li class="list-inline-item">
@@ -196,13 +196,13 @@
                         data-toggle="tooltip" data-toggle="modal" data-target=".bd-edit-modal-lg" data-placement="top"
                         title="Edit"><i class="fa fa-edit"></i></button>
       
-                        <!-- sub admin for edit only  -->
+                      
                   
                     <button class="btn text-warning btn-sm rounded-0" *ngIf=" editParent"  type="button" data-toggle="tooltip"
                       data-toggle="modal" data-target=".bd-modal-lg" data-placement="top" (click)="editUser(user)"
                       title="Edit"><i class="fa fa-edit"></i></button>
                   </li>
-                   <!-- sub admin for edit only  -->
+               
                     <li class="list-inline-item">
                       <button class="btn text-danger btn-sm rounded-0" *ngIf="parent" (click)="deleteUser(user)" type="button"
                         data-toggle="tooltip" data-placement="top" title="Delete">
@@ -210,7 +210,7 @@
                       </button>
                     </li>
                   </ul>
-                </td>
+                </td> -->
               </tr>
   
   
@@ -248,7 +248,7 @@
                   </li>
                    <!-- sub admin for edit only  -->
                     <li class="list-inline-item">
-                      <button class="btn text-danger btn-sm rounded-0" *ngIf="parent" (click)="deleteUser(user.id)" type="button"
+                      <button class="btn text-danger btn-sm rounded-0" *ngIf="parent" (click)="deleteUser(user)" type="button"
                         data-toggle="tooltip" data-placement="top" title="Delete">
                         <i class="fa fa-trash"></i>
                       </button>
@@ -277,23 +277,18 @@
                   <ul class="list-inline m-0">
   
                     <li class="list-inline-item">
-                      <button class="btn text-warning btn-sm rounded-0" *ngIf="parent"  (click)="editUser(user)" type="button"
-                        data-toggle="tooltip" data-toggle="modal" data-target=".bd-edit-modal-lg" data-placement="top"
-                        title="Edit"><i class="fa fa-edit"></i></button>
+                      <button class="btn btn-warning btn-sm rounded-0" *ngIf="parent"  (click)="activatedUser(user)" type="button"
+                        data-toggle="tooltip" data-toggle="modal" data-placement="top"
+                        title="Edit">Activated</button>
       
                         <!-- sub admin for edit only  -->
                   
-                    <button class="btn text-warning btn-sm rounded-0" *ngIf=" editParent"  type="button" data-toggle="tooltip"
-                      data-toggle="modal" data-target=".bd-modal-lg" data-placement="top" (click)="editUser(user)"
-                      title="Edit"><i class="fa fa-edit"></i></button>
+                    <button class="btn btn-warning btn-sm rounded-0" *ngIf=" editParent"  type="button" data-toggle="tooltip"
+                      data-toggle="modal" data-target=".bd-modal-lg" data-placement="top" (click)="activatedUser(user)"
+                      title="Edit"></button>
                   </li>
                    <!-- sub admin for edit only  -->
-                    <li class="list-inline-item">
-                      <button class="btn text-danger btn-sm rounded-0" *ngIf="parent" (click)="deleteUser(user.id)" type="button"
-                        data-toggle="tooltip" data-placement="top" title="Delete">
-                        <i class="fa fa-trash"></i>
-                      </button>
-                    </li>
+                  
                   </ul>
                 </td>
               </tr>

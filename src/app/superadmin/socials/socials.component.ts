@@ -5,6 +5,7 @@ import { Observable, ReplaySubject } from 'rxjs';
 import { flatMap } from 'rxjs/operators';
 import { ServiceService } from 'src/app/service/service.service';
 import Swal from 'sweetalert2';
+import {NgxImageCompressService} from 'ngx-image-compress';
 
 @Component({
   selector: 'app-socials',
@@ -20,10 +21,15 @@ export class SocialsComponent implements OnInit {
   public message: string;
   user: any;
   feedDetails = [];
+  imgResultBeforeCompress: any;
+  imgResultAfterCompress :any=[];
+  imagss: any;
+  
 
   constructor(
     private serviceService: ServiceService,
     private toastr: ToastrService,
+    private imageCompress: NgxImageCompressService
 
   ) { }
 
@@ -68,25 +74,54 @@ export class SocialsComponent implements OnInit {
 
   // }
 
+  compressFile(event) {
+  
+    this.imageCompress.uploadFile().then(({image, orientation}) => {
+    
+  
+      this.imageCompress.compressFile(image, orientation, 50, 50).then(
 
+        results => {
+
+          this.imgResultAfterCompress   = results;
+         
+          console.log('Size in bytes is now:', this.imageCompress.byteCount(results));
+      
+        }
+      );
+
+      
+    });
+    
+  }
 
 
 
 
   base64Output: string = 'null';
 
-  onFileSelected(event) {
-    if (event.length === 0) {
-      return null
-    } else {
-      this.convertFile(event.target.files[0]).subscribe(base64 => {
+//   onFileSelected(event) {
+    
+//  console.log(event.target.files[0])
+  
+//       this.convertFile(event.target.files[0]).subscribe(base64 => {
       
-        this.base64Output = base64;
-      });
-    }
+//         this.base64Output = base64;
+    
+ 
+//       });
+    
 
 
-  }
+//   }
+
+  // convertFile(imgResultAfterCompress: File): Observable<string> {
+  //   const result = new ReplaySubject<string>(1);
+  //   const reader = new FileReader();
+  //   reader.readAsBinaryString(imgResultAfterCompress);
+  //   reader.onload = (event) => result.next(btoa(imgResultAfterCompress.toString()));
+  //   return result;
+  // }
 
   convertFile(files: File): Observable<string> {
     const result = new ReplaySubject<string>(1);
@@ -102,7 +137,7 @@ export class SocialsComponent implements OnInit {
       let social = {
         user_name: this.user.name,
         feed: this.form.value.feed,
-        image: this.base64Output,
+        image: this.imgResultAfterCompress,
         AuthToken: this.user.token,
       }
    

@@ -139,10 +139,14 @@ export class TenantComponent implements OnInit {
   refresh() {
     this.form.reset()
   }
+
+  hide : boolean = true;
   AllData(){
  this.allMember = true;
  this.active =false;
  this.Inactive =false;
+ this.hide = false
+
   }
 
   ActiveTab(){
@@ -271,6 +275,8 @@ this.allMember =false;
           'Tenant has been deleted.',
           'success'
         )
+      } (error) => {
+        this.error = 'Server Down Please try After Sometime ..! '
       }
     })
   }
@@ -294,6 +300,8 @@ this.allMember =false;
         'Tenant has Updated.',
         'success'
       )
+    },(error) => {
+      this.error = 'Server Down Please try After Sometime ..! '
     })
   }
   

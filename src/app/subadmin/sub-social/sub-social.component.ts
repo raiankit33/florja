@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, ReplaySubject } from 'rxjs';
+import {NgxImageCompressService} from 'ngx-image-compress';
 
 import Swal from 'sweetalert2';
 import { SubadminService } from 'src/app/service/subadmin.service';
@@ -19,9 +20,11 @@ export class SubSocialComponent implements OnInit {
   public message: string;
   user: any;
   feedDetails = [];
+  imgResultAfterCompress: string;
 
   constructor(
     private subadmin: SubadminService,
+    private imageCompress: NgxImageCompressService,
     private toastr: ToastrService,
 
   ) { }
@@ -65,7 +68,26 @@ export class SubSocialComponent implements OnInit {
   // }
 
 
+  compressFile(event) {
+  
+    this.imageCompress.uploadFile().then(({image, orientation}) => {
+    
+  
+      this.imageCompress.compressFile(image, orientation, 50, 50).then(
 
+        results => {
+
+          this.imgResultAfterCompress   = results;
+         
+          console.log('Size in bytes is now:', this.imageCompress.byteCount(results));
+      
+        }
+      );
+
+      
+    });
+    
+  }
 
 
 
@@ -97,7 +119,7 @@ export class SubSocialComponent implements OnInit {
       let social = {
         user_name: this.user.name,
         feed: this.form.value.feed,
-        image: this.base64Output,
+        image: this.imgResultAfterCompress,
         AuthToken: this.user.token,
       }
       console.log(social)

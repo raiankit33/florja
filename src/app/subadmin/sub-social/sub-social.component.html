@@ -33,7 +33,7 @@
           <ul class="icons">
             <!-- (change)="preview(file.files)" -->
             <li > <i class="uil uil-capture" ></i></li>
-            <input #file type="file" accept='image/*'  (change)="onFileSelected($event)" name="image"
+            <input #file type="file" accept='image/*' (click)="compressFile($event)" name="image"
             formControlName="image" />    
             <!-- <li><i class="far fa-file-image"></i></li> -->
             <li><i class="fas fa-map-marker-alt"></i>

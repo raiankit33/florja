@@ -74,7 +74,7 @@ private messagingService: MessagingService,
     vent_type: new FormControl('', Validators.required),
     strega_URL: new FormControl('', Validators.required),
     status: new FormControl('', Validators.required),
-    p_id: new FormControl('', Validators.required),
+    plant_id: new FormControl('', Validators.required),
    
   })
 
@@ -140,7 +140,7 @@ private messagingService: MessagingService,
     vent_type: "",
     strega_URL: "",
     status: "",
-    p_id: "",
+    plant_id: "",
     plant_name:""
   }
 
@@ -166,10 +166,28 @@ private messagingService: MessagingService,
     if (this.form.valid) {
      
       let token = {
-        token :this.user.token
+        name: this.form.value.name,
+        watering_duration: this.form.value.watering_duration,
+        irrigation_ping_interval: this.form.value.irrigation_ping_interval,
+        last_ping_date: this.form.value.last_ping_date,
+        last_ping_time:this.form.value.last_ping_time,
+        water_usage: this.form.value.water_usage,
+        sync_system_date:this.form.value.sync_system_date,
+        sync_system_time:this.form.value.sync_system_time,
+        irrigation_unit_cluster:this.form.value.irrigation_unit_cluster,
+        irrigation_unit_latitude:this.form.value.irrigation_unit_latitude,
+        irrigation_unit_longitude: this.form.value.irrigation_unit_longitude,
+        payload: this.form.value.payload,
+        schedule: this.form.value.schedule,
+        valve:this.form.value.valve,
+        vent_type:this.form.value.vent_type,
+        strega_URL: this.form.value.strega_URL,
+        status: this.form.value.status,
+        plant_id: this.form.value.plant_id,
+        AuthToken:this.user.token
       }
-    console.log(this.form.value)
-      this.service.addIrrigation(this.form.value,token).subscribe(res => {
+
+      this.service.addIrrigation(token).subscribe(res => {
         this.service.filter('');
         this.form.reset();
         Swal.fire(

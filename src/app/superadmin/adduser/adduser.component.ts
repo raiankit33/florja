@@ -133,7 +133,7 @@ AllData(){
     phone:this.form.value.phone,
     id:this.form.value.id,
     permission:this.form.value.permission,
-    token:this.user.token
+    AuthToken:this.user.token
   }
   
 
@@ -152,12 +152,14 @@ AllData(){
           setTimeout(() => {
             this.open = false
           }, 3000);
-        }else{
+        }else if(res.statusCode == 404){
           this.message = "This Phone no is already registered."
           this.mess = true;
           setTimeout(() => {
             this.mess = false
           }, 3000);
+        }else{
+          this.message = "Token Mismatch"
         }
       })
 
@@ -267,6 +269,35 @@ getSort(a,b){
     }
     );
   } 
+
+  activateUser(user) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You want to Activate this Tenant!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, Activate!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        let activate ={
+          id :user.id,
+          AuthToken:this.user.token
+        }
+       
+        this.serviceService.activateU(activate).subscribe(() => {
+        this.getUserDetails();
+          Swal.fire(
+            'Success!',
+            'User Activated.',
+            'success'
+          )
+        });
+
+        
+      }})
+  }
 
 
 }

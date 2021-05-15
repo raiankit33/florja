@@ -115,6 +115,7 @@ AllData(){
   this.allMember = true;
   this.active =false;
   this.Inactive =false;
+ 
    }
  
    ActiveTab(){
@@ -137,11 +138,8 @@ AllData(){
     name: this.form.value.name,
     email: this.form.value.email,
     phone:this.form.value.phone,
-   
     permission:this.form.value.permission
   }
-  
-
       this.serviceService.adminUser(createUserPayload).subscribe( (res:any) => {
         if (res.statusCode== 200) {
           this.serviceService.filter('');
@@ -159,6 +157,8 @@ AllData(){
 
     }else{
       this.validateAllFormFields(this.form);
+    }(error)=> {
+      this.error = 'Server Down Please try After Sometime ..! '
     }
   }
 
@@ -189,7 +189,7 @@ AllData(){
     );
   }
  
-  delete :any;
+ 
 
   deleteUser(user) {
     Swal.fire({
@@ -202,18 +202,21 @@ AllData(){
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
-        this.delete = JSON.stringify(user)
-        this.serviceService.deleteAdminUser(this.delete).subscribe((res: any) => {
+      let createToken ={
+        id: user.id,
+        AuthToken : this.user.token,
+      }
+        this.serviceService.deleteAdminUser(createToken).subscribe((res: any) => {
           this.getUserDetails();
-
+          Swal.fire(
+            'Deleted!',
+            ' Admin user deleted.',
+            'success'
+          )
 
         });
-
-        Swal.fire(
-          'Deleted!',
-          'Tenant has been deleted.',
-          'success'
-        )
+      }(error)=> {
+        this.error = 'Server Down Please try After Sometime ..! '
       }
     })
   }
@@ -224,20 +227,49 @@ AllData(){
   editUser(user) {
     this.userObj = user;
     this.isEdit = true;
-
-    // this.sharedData.updateSharedData(tenant);
-    // this.router.navigate(['superadmin/edit',{id:tenant._id}]);
   }
+
   updateUser() {
     this.serviceService.UpdateAdminUser(this.userObj).subscribe(() => {
       Swal.fire(
         'Success!',
-        'User has Updated.',
+        'User Updated.',
         'success'
       )
     })
   }
 
+activatedUser(user){
+
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You want to Activate user!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, Activate!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+      let createToken ={
+        id: user.id,
+        AuthToken : this.user.token,
+      }
+        this.serviceService.activateU(createToken).subscribe((res: any) => {
+          this.getUserDetails();
+          Swal.fire(
+            'Activated!',
+            ' Admin Activated.',
+            'success'
+          )
+
+        });
+      }(error)=> {
+        this.error = 'Server Down Please try After Sometime ..! '
+      }
+    })
+  }
+   
 
 
 
