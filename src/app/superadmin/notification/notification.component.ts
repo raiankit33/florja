@@ -135,7 +135,7 @@ export class NotificationComponent implements OnInit {
           this.serviceService.filter('');
       this.form.reset();
       Swal.fire(
-        'Notification has added Successfully!',
+        'Notification Sent Successfully!',
         '',
         'success'
       )
@@ -189,7 +189,7 @@ export class NotificationComponent implements OnInit {
         console.log(this.userObj)
         Swal.fire(
          'Success!',
-         'Notification has Updated.',
+         'Notification Updated.',
          'success'
        )
          })
@@ -216,7 +216,7 @@ export class NotificationComponent implements OnInit {
         
           Swal.fire(
             'Deleted!',
-            'Notification has been deleted.',
+            'Notification Deleted.',
             'success'
           )
         }

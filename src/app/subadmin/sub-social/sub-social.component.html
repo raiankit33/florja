@@ -16,12 +16,12 @@
         <div class="input-box">
           <div class="tweet-area">
             <!-- <span class="placeholder">What's happening?</span> -->
-          <textarea style="width: 700px; height: 100px;" name="feed"
+          <textarea style="width: 700px; height: 130px;" name="feed" placeholder="What's happening?"
           formControlName="feed" ></textarea>
          
-            <div class="input editable" contenteditable="true" spellcheck="false"></div>
+            <!-- <div class="input editable" contenteditable="true" spellcheck="false"></div> -->
             <img [src]="imgURL" height="200" *ngIf="imgURL">
-            <div class="input readonly" contenteditable="true" spellcheck="false"></div>
+            <!-- <div class="input readonly" contenteditable="true" spellcheck="false"></div> -->
            
           </div>
           <div class="privacy">
@@ -76,10 +76,10 @@
                     <li><i class="fa fa-pencil-square-o"></i>Edit Post</li>
                     <li (click)="deletePost(card.id)"><i class="fa fa-trash-o"></i>Delete Post</li>
                     <li class="bad-report"><i class="fa fa-flag"></i>Report Post</li>
-                    <li><i class="fa fa-address-card-o"></i>Boost This Post</li>
+                    <!-- <li><i class="fa fa-address-card-o"></i>Boost This Post</li>
                     <li><i class="fa fa-clock-o"></i>Schedule Post</li>
                     <li><i class="fa fa-wpexplorer"></i>Select as featured</li>
-                    <li><i class="fa fa-bell-slash-o"></i>Turn off Notifications</li>
+                    <li><i class="fa fa-bell-slash-o"></i>Turn off Notifications</li> -->
                   </ul>
                 </div>
               </div>
@@ -97,7 +97,7 @@
         <br>
         <p class="card-text ml-4">{{card.feed}}</p>
  
-        <img class="card-img-top" src="data:image/png;base64,{{card.image}}" style="height: 400px;" class="ml-3 mr-3 mt-2"  alt="Card image cap">
+        <img class="card-img-top" src="{{card.image}}" style="height: 400px;" class="ml-3 mr-3 mt-2"  alt="Card image cap">
  
         <div class="card-body">
             <div class="box">

@@ -224,7 +224,7 @@ getSort(a,b){
 
         Swal.fire(
           'Deleted!',
-          'Tenant has been deleted.',
+          'Tenant Deleted.',
           'success'
         )
       }
@@ -249,7 +249,7 @@ getSort(a,b){
     this.serviceService.UpdateUser(this.userObj).subscribe(() => {
       Swal.fire(
         'Success!',
-        'User has Updated.',
+        'User Updated.',
         'success'
       )
     })

@@ -245,7 +245,7 @@ this.allMember =false;
 
   timer() {
     setTimeout(() => {
-      console.log("Hello from setTimeout");
+    
     }, 1000);
   }
 
@@ -272,7 +272,7 @@ this.allMember =false;
 
         Swal.fire(
           'Deleted!',
-          'Tenant has been deleted.',
+          'Tenant  deleted.',
           'success'
         )
       } (error) => {
@@ -297,7 +297,7 @@ this.allMember =false;
     this.serviceService.updateTenant(this.userObj).subscribe(() => {
       Swal.fire(
         'Success!',
-        'Tenant has Updated.',
+        'Tenant  Updated.',
         'success'
       )
     },(error) => {

@@ -93,25 +93,25 @@ export class SubSocialComponent implements OnInit {
 
   base64Output: string = 'null';
 
-  onFileSelected(event) {
-    if (event.length === 0) {
-      return null
-    } else {
-      this.convertFile(event.target.files[0]).subscribe(base64 => {
-        this.base64Output = base64;
-      });
-    }
+  // onFileSelected(event) {
+  //   if (event.length === 0) {
+  //     return null
+  //   } else {
+  //     this.convertFile(event.target.files[0]).subscribe(base64 => {
+  //       this.base64Output = base64;
+  //     });
+  //   }
 
 
-  }
+  // }
 
-  convertFile(files: File): Observable<string> {
-    const result = new ReplaySubject<string>(1);
-    const reader = new FileReader();
-    reader.readAsBinaryString(files);
-    reader.onload = (event) => result.next(btoa(event.target.result.toString()));
-    return result;
-  }
+  // convertFile(files: File): Observable<string> {
+  //   const result = new ReplaySubject<string>(1);
+  //   const reader = new FileReader();
+  //   reader.readAsBinaryString(files);
+  //   reader.onload = (event) => result.next(btoa(event.target.result.toString()));
+  //   return result;
+  // }
 
   onPost() {
 

@@ -134,7 +134,7 @@ export class SensortypeComponent implements OnInit {
         this.serviceService.filter('');
         this.form.reset();
         Swal.fire(
-          'Sensor has added successfully!',
+          'Sensor added successfully!',
           '',
           'success'
         )
@@ -177,7 +177,7 @@ export class SensortypeComponent implements OnInit {
 
         Swal.fire(
           'Deleted!',
-          'Tenant has been deleted.',
+          'Tenant Deleted.',
           'success'
         )
       }
@@ -196,7 +196,7 @@ export class SensortypeComponent implements OnInit {
     this.serviceService.updateSensor(this.userObj).subscribe(() => {
       Swal.fire(
         'Success!',
-        'Sensor has Updated.',
+        'Sensor Updated.',
         'success'
       )
     })

@@ -91,6 +91,8 @@ export class SubNotificationComponent implements OnInit {
         name: this.form.value.name,
         title: this.form.value.title,
         description: this.form.value.description,
+        u_id: this.form.value.u_id,
+        AuthToken:this.user.id
        
       }
       console.log(notification)
@@ -100,7 +102,7 @@ export class SubNotificationComponent implements OnInit {
         this.subadminService.filter('');
         this.form.reset();
         Swal.fire(
-          'Notification added successfully!',
+          'Notification Sent Successfully!',
           '',
           'success'
         )

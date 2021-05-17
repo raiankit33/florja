@@ -191,7 +191,7 @@ private messagingService: MessagingService,
         this.service.filter('');
         this.form.reset();
         Swal.fire(
-          'Irrigation has added successfully!',
+          'Irrigation added successfully!',
           '',
           'success'
         )
@@ -242,7 +242,7 @@ private messagingService: MessagingService,
 
         Swal.fire(
           'Deleted!',
-          ' Deleted .',
+          'Irrigation Deleted .',
           'success'
         )
       }
@@ -268,7 +268,7 @@ private messagingService: MessagingService,
       this.service.filter('');
       Swal.fire(
         'Success!',
-        'Irrigation has been Updated.',
+        'Irrigation Updated.',
         'success'
       )
     })

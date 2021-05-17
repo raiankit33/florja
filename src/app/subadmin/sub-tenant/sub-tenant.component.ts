@@ -199,7 +199,7 @@ delete : any;
 
         Swal.fire(
           'Deleted!',
-          'Sub Tenant has been deleted.',
+          'Sub Tenant  deleted.',
           'success'
         )
       }

@@ -112,7 +112,7 @@ refresh(){
         this.serviceService.filter('added click');
     this.form.reset();
     Swal.fire(
-      'Academia has added Successfully!',
+      'Academia added Successfully!',
       '',
       'success'
     )
@@ -163,7 +163,7 @@ refresh(){
 
       Swal.fire(
        'Success!',
-       'Academia has Updated.',
+       'Academia  Updated.',
        'success'
      )
        })
@@ -192,7 +192,7 @@ refresh(){
       
         Swal.fire(
           'Deleted!',
-          'Academia has been deleted.',
+          'Academia Deleted.',
           'success'
         )
       }

@@ -64,6 +64,11 @@ UpdateUser(user){
 
 }
 
+activateU(token) {
+
+  return this.http.post('https://7v1k2gjk6k.execute-api.us-east-2.amazonaws.com/activateUser/activateUser', token)
+  .pipe(catchError(this.handleError));
+}
 
 
 // sub tenant Api 

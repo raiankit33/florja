@@ -152,7 +152,7 @@ refresh(){
       this.form.reset();
     
       Swal.fire(
-        'Sensor has added successfully!',
+        'Sensor added successfully!',
         '',
         'success'
       )
@@ -207,7 +207,7 @@ refresh(){
     Swal.fire(
       
      'Success!',
-     'Sensor has been Updated.',
+     'Sensor Updated.',
      'success',
      
    )
@@ -235,7 +235,7 @@ refresh(){
       
         Swal.fire(
           'Deleted!',
-          'Sensor has been deleted.',
+          'Sensor  Deleted.',
           'success'
         )
       }

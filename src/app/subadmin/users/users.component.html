@@ -240,8 +240,6 @@
               </td>
             </tr>
 
-
-
           </tbody>
 
           <tbody *ngIf ='Inactive'>
@@ -262,13 +260,13 @@
                 <ul class="list-inline m-0">
 
                   <li class="list-inline-item">
-                    <button class="btn text-warning btn-sm rounded-0" *ngIf="tenant" (click)="editUser(user)" type="button"
-                      data-toggle="tooltip" data-toggle="modal"  data-placement="top"
-                      title="Edit"><i class="fa fa-edit"></i></button>
+                    <button class="btn btn-warning btn-sm rounded-0" *ngIf="tenant" (click)="ActivateUser(user)" type="button"
+                      data-toggle="tooltip" data-toggle="modal" data-target=".bd-modal-lg" data-placement="top"
+                      title="Edit">Activate</button>
 
-                      <button class="btn text-warning btn-sm rounded-0" *ngIf="editTenant" (click)="editUser(user)" type="button"
-                      data-toggle="tooltip" data-toggle="modal"  data-placement="top"
-                      title="Edit"><i class="fa fa-edit"></i></button>
+                      <button class="btn btn-warning btn-sm rounded-0" *ngIf="editTenant" (click)="ActivateUsertUser(user)" type="button"
+                      data-toggle="tooltip" data-toggle="modal" data-target=".bd-lg" data-placement="top"
+                      title="Edit">Activate</button>
                   </li>
                  
                 </ul>
@@ -278,6 +276,8 @@
 
 
           </tbody>
+
+
         </table>
       </div>
     </div>

@@ -17,7 +17,7 @@ import { AngularFireMessagingModule } from '@angular/fire/messaging';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire';
-
+import {NgxImageCompressService} from 'ngx-image-compress';
 import { environment } from '../../environments/environment';
 import { SubSocialComponent } from './sub-social/sub-social.component';
 
@@ -51,6 +51,6 @@ import { SubSocialComponent } from './sub-social/sub-social.component';
     AngularFireMessagingModule,
     AngularFireModule.initializeApp(environment.firebase),
   ],
-  providers: [SubadminService,MessagingService],
+  providers: [SubadminService,MessagingService,NgxImageCompressService],
 })
 export class SubadminModule { }

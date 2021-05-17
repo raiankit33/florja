@@ -166,7 +166,7 @@
 /*Profile Card CSS*/
 
 .profile-card{
-    background: linear-gradient(to bottom, rgba(39,170,225,.8), rgba(28,117,188,.8)), url(../../../assets/avatar.png) no-repeat;
+    background: linear-gradient(to bottom, rgba(39,170,225,.8), rgba(28,117,188,.8)), url() no-repeat;
     background-size: cover;
     width: 100%;
     min-height: 90px;

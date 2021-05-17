@@ -218,7 +218,7 @@ console.log(createPlant)
        this.serviceService.filter('');
        this.form.reset();
        Swal.fire(
-         'Plant has added successfully!',
+         'Plant added successfully!',
          '',
          'success'
        )
@@ -265,7 +265,7 @@ console.log(createPlant)
        
          Swal.fire(
            'Deleted!',
-           'Plant has been deleted.',
+           'Plant  Deleted.',
            'success'
          )
        }
@@ -300,7 +300,7 @@ console.log(createPlant)
  
     Swal.fire(
      'Success!',
-     'plant has been Updated.',
+     'plant Updated.',
      'success'
    )
      })

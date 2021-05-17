@@ -236,7 +236,34 @@ delete :any;
     })
   }
 
+  ActivateUser(user) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You want to Activate this User!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, Activate!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        let activate ={
+          id :user.id,
+          AuthToken:this.user.token
+        }
+       
+        this.subadminService.activateU(activate).subscribe(() => {
+          this.getUserDetails();
+          Swal.fire(
+            'Success!',
+            'Tenant Activated.',
+            'success'
+          )
+        });
 
+        
+      }})
+  }
 
 
 

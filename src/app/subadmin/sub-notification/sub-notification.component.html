@@ -54,10 +54,10 @@
 
                                 <div class="input-box">
                                   <span class="details">* Whom To Send</span>
-                                  <select name="Product code" class="form-control"  formControlName="id" name="id" style="width:600px">
-                                    <option >---Select--- </option>
-                                    <option value="">All</option>
-                                    <option  style="background-color:blue; color: white;">User Name</option>
+                                  <select name="Product code" class="form-control"  formControlName="u_id" name="u_id" style="width:600px">
+                                    <option value="default" >---Select--- </option>
+                                    <option value="null">All</option>
+                                    <option  style="background-color:blue; color: white;" disabled >User Name</option>
 
                                     <option value="{{user.id}}" *ngFor="let user of userDetails ">{{user.name}}
                                     </option>
